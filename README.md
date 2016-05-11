@@ -1,8 +1,15 @@
 # LeitorRSSWeb
 Projeto de Linguagem de Programação III para Universidade Presbiteriana Mackenzie. Leitor de Feeds RSS simples.
 
+## TODO
+- Banco de dados;
+- Puxar XML dos Feeds;
+- XML > Objetos;
+- Persistir objetos no Banco;
+- Querys para listar postagens;
+- HTML/CSS Básico usando jQuery Mobile;
 
-### LICENSE
+## LICENSE
 ```
 The MIT License (MIT)
 
