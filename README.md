@@ -7,7 +7,7 @@ Projeto de Linguagem de Programação III para Universidade Presbiteriana Macken
 - [ ] XML > Objetos;
 - [ ] Persistir objetos no Banco;
 - [ ] Querys para listar postagens;
-- [ ] HTML/CSS Básico usando jQuery Mobile;
+- [x] HTML/CSS Básico usando jQuery Mobile;
 
 ## LICENSE
 ```
