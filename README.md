@@ -3,8 +3,8 @@ Projeto de Linguagem de Programação III para Universidade Presbiteriana Macken
 
 ## TODO
 - [x] Banco de dados;
-- [ ] Puxar XML dos Feeds;
-- [ ] XML > Objetos;
+- [x] Puxar XML dos Feeds;
+- [x] XML > Objetos;
 - [ ] Persistir objetos no Banco;
 - [ ] Querys para listar postagens;
 - [x] HTML/CSS Básico usando jQuery Mobile;
