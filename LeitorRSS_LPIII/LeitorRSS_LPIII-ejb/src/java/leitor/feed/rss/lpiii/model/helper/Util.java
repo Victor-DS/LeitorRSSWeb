@@ -23,6 +23,12 @@
  */
 package leitor.feed.rss.lpiii.model.helper;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -36,6 +42,28 @@ import java.util.logging.Logger;
  * @author victor
  */
 public class Util {
+        
+        public static String getFromURL(String URL) throws MalformedURLException, IOException {
+                URL url = new URL(URL);
+
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+                int code = conn.getResponseCode();
+
+                BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+                StringBuilder sb = new StringBuilder();
+                String line;
+                while ((line = rd.readLine()) != null) {
+                        sb.append(line);
+                }
+                
+                rd.close();
+
+                conn.disconnect();
+
+                return sb.toString();
+        }
         
         public static Date timestampToDate(String timestamp) {
                 DateFormat formatter = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss zzz", 

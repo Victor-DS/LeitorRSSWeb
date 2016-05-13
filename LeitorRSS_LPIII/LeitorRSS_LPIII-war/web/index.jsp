@@ -1,0 +1,62 @@
+<%-- 
+    Document   : index
+    Created on : May 12, 2016, 3:24:33 PM
+    Author     : victor
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+        <head>
+                <title>Leitor de Feeds RSS</title>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <link rel="stylesheet" href="js/jqueryMobile/jquery.mobile-1.4.5.css">
+                <link rel="stylesheet" href="css/style.css">
+                <script src="js/jQuery/jquery-2.2.3.js"></script>
+                <script src="js/jqueryMobile/jquery.mobile-1.4.5.js"></script>
+        </head>
+        <body>
+                <div data-role="page" class="ui-responsive-panel">
+                        <header>
+                                <div data-role="header" style="overflow:hidden;">
+                                        <a href="#painelLateral" data-icon="bars" class="ui-btn-left" data-iconpos="notext"></a>
+                                        <h1>Leitor de Feeds RSS</h1>
+                                </div>
+                                
+                                <div data-role="controlgroup" data-type="horizontal" style="padding: 10px;">
+                                        <input type="text" id="feedURLInput"
+                                               data-wrapper-class="controlgroup-textinput ui-btn" 
+                                               placeholder="http://www.site.com.br/feed">
+                                        <button>Add</button>
+                                </div>
+                        </header>
+
+                        <!-- PAINEL LATERAL -->
+                        <div data-role="panel" id="painelLateral" data-display="overlay" >
+                                <ul data-role="listview" data-divider-theme="a">
+                                        <li data-role="list-divider" >Principal</li>
+                                        <li><a href="#" data-rel="close">Início</a></li>
+                                        <li><a href="#">Sobre</a></li>
+                                        <li data-role="list-divider">Filtros</li>
+                                        <li><a href="#">Filtro A</a></li>
+                                        <li><a href="#">Filtro B</a></li>
+                                </ul>
+                        </div>
+                        <!-- PAINEL LATERAL -->
+                        
+                        <div data-role="content" style="padding: 5px;">
+                                <!-- Conteúdo da lista dos posts vem aqui -->   
+                                <!-- Mock -->
+                                <div class="ui-corner-all custom-corners" style="padding: 5px">
+                                        <div class="ui-bar ui-bar-a">
+                                                <h3>Cesar Menotti invade votação do impeachment pra avisar que tá mal</h3>
+                                        </div>
+                                        <div class="ui-body ui-body-a">
+                                                <p>Votação do impeachment rolando louca no senado, globo cobrindo cada segundo em Brasília, aí chamam o reporter pra informar um acontecimento e PLAW, surge o Cesar Menotti daquela dupla sertaneja com o Fabiano pra mandar um recado&#8230; &#8220;Para tudo, tenho algo mais importante que esse impeachment pra dizer pra vcs, tô mal.&#8221; AuhAUHAUHuhA Esse tipo [&#8230;]</p>                                        
+                                        </div>
+                                </div>
+                        </div>
+                </div>                
+        </body>
+</html>
