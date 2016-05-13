@@ -26,16 +26,41 @@ package leitor.feed.rss.lpiii.model;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import leitor.feed.rss.lpiii.model.helper.Util;
 
 /**
  *
  * @author victor
  */
+@XmlRootElement(name = "item")
 @Entity
 public class Publication {
         
-        private String title, url, comments, creator, category[], description, content, date;
+        @XmlElement(name = "title")
+        private String title;
+
+        @XmlElement(name = "link")
+        private String url;
+        
+        @XmlElement(name = "comments")
+        private String comments;
+
+        @XmlElement(name = "dc:creator")
+        private String creator;
+
+        @XmlElement(name = "category")
+        private String category[];
+        
+        @XmlElement(name = "description")
+        private String description;
+        
+        @XmlElement(name = "content:encoded")
+        private String content; 
+        
+        @XmlElement(name = "pubDate")
+        private String date;
         
         @Id
         private Long id;

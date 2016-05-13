@@ -49,6 +49,8 @@ public class Util {
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
                 int code = conn.getResponseCode();
+                
+                //TODO Tratar erro para code != 200
 
                 BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 

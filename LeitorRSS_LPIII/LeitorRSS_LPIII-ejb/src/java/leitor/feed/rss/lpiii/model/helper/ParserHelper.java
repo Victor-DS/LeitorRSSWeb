@@ -24,8 +24,13 @@
 package leitor.feed.rss.lpiii.model.helper;
 
 import java.io.IOException;
+import java.io.StringReader;
 import java.util.ArrayList;
 import javax.management.modelmbean.XMLParseException;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
+import leitor.feed.rss.lpiii.model.Channel;
 import leitor.feed.rss.lpiii.model.Publication;
 
 /**
@@ -35,13 +40,21 @@ import leitor.feed.rss.lpiii.model.Publication;
 public class ParserHelper {
         
         public static ArrayList<Publication> getPublicationsFromRSS(String XML) 
-                throws XMLParseException, IOException {
-                if(XML == null || XML.isEmpty()) throw new XMLParseException("Empty file");
-                if(XML.startsWith("<html>")) throw new XMLParseException("Invalid XML feed");
+                throws XMLParseException, IOException, JAXBException {
+                if(XML == null || XML.isEmpty()) 
+                    throw new XMLParseException("Empty file");
                 
-                ArrayList<Publication> publications = new ArrayList<Publication>();
+                if(XML.startsWith("<html>")) 
+                    throw new XMLParseException("Invalid XML feed");
                 
-                return publications;
+                JAXBContext jc = JAXBContext.newInstance(Channel.class);
+
+                Unmarshaller unmarshaller = jc.createUnmarshaller();
+                
+                StringReader reader = new StringReader(XML);
+                Channel root = (Channel) unmarshaller.unmarshal(reader);
+                
+                return root.getItem();
         }
         
 }
