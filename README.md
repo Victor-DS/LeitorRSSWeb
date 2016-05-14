@@ -8,6 +8,7 @@ Projeto de Linguagem de Programação III para Universidade Presbiteriana Macken
 - [ ] Persistir objetos no Banco;
 - [ ] Querys para listar postagens;
 - [x] HTML/CSS Básico usando jQuery Mobile;
+- [ ] Login no Facebook
 
 ## LICENSE
 ```
