@@ -30,8 +30,8 @@ import javax.management.modelmbean.XMLParseException;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
-import leitor.feed.rss.lpiii.model.Channel;
 import leitor.feed.rss.lpiii.model.Publication;
+import leitor.feed.rss.lpiii.model.Rss;
 
 /**
  *
@@ -47,14 +47,14 @@ public class ParserHelper {
                 if(XML.startsWith("<html>")) 
                     throw new XMLParseException("Invalid XML feed");
                 
-                JAXBContext jc = JAXBContext.newInstance(Channel.class);
+                JAXBContext jc = JAXBContext.newInstance(Rss.class);
 
                 Unmarshaller unmarshaller = jc.createUnmarshaller();
                 
                 StringReader reader = new StringReader(XML);
-                Channel root = (Channel) unmarshaller.unmarshal(reader);
+                Rss root = (Rss) unmarshaller.unmarshal(reader);
                 
-                return root.getItem();
+                return root.getChannel().getItem();
         }
         
 }

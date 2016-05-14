@@ -5,15 +5,15 @@
  */
 package leitor.feed.rss.lpiii.model.dao;
 
-import javax.ejb.LocalBean;
-import javax.ejb.Stateless;
+//import javax.ejb.LocalBean;
+//import javax.ejb.Stateless;
 
 /**
  *
  * @author victor
  */
-@Stateless
-@LocalBean
+//@Stateless
+//@LocalBean
 public class PublicationDAO {
         
 }

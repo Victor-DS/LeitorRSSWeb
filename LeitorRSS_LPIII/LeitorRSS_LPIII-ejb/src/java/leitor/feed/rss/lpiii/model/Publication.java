@@ -24,8 +24,8 @@
 package leitor.feed.rss.lpiii.model;
 
 import java.util.Date;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import leitor.feed.rss.lpiii.model.helper.Util;
@@ -34,8 +34,7 @@ import leitor.feed.rss.lpiii.model.helper.Util;
  *
  * @author victor
  */
-@XmlRootElement(name = "item")
-@Entity
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Publication {
         
         @XmlElement(name = "title")
@@ -62,7 +61,7 @@ public class Publication {
         @XmlElement(name = "pubDate")
         private String date;
         
-        @Id
+//        @Id
         private Long id;
 
         public Publication(String title, String url, String comments, String creator, String[] category, 

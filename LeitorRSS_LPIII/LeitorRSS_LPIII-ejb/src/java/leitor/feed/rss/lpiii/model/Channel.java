@@ -24,6 +24,8 @@
 package leitor.feed.rss.lpiii.model;
 
 import java.util.ArrayList;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -31,7 +33,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  * @author 41357205
  */
-@XmlRootElement(name = "channel")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Channel {
     
     private String title;

@@ -47,6 +47,7 @@ public class Util {
                 URL url = new URL(URL);
 
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.addRequestProperty("User-Agent", "Mozilla/4.76"); 
 
                 int code = conn.getResponseCode();
                 
