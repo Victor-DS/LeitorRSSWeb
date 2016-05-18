@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /AtividadeXMLXSLSimples/nbproject/private/
 /AtividadeXMLXSLSimples/build/
 /Atividade_MET/MetData/MetData-war/dist/
@@ -6,3 +7,14 @@
 /LeitorRSS_LPIII/LeitorRSS_LPIII-war/build/
 /LeitorRSS_LPIII/LeitorRSS_LPIII-war/dist/
 /LeitorRSS_LPIII/build/
+/FeedRSSJAXB/nbproject/private/
+=======
+*.iml
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/captures
+>>>>>>> 32475c5d83221e5491aef5f6404d184c533862c3
