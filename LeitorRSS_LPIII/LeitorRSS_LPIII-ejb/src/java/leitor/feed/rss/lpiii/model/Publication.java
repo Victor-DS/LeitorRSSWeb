@@ -23,45 +23,59 @@
  */
 package leitor.feed.rss.lpiii.model;
 
+import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 import leitor.feed.rss.lpiii.model.helper.Util;
 
 /**
  *
  * @author victor
  */
+@Entity(name = "Publicacoes")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Publication {
+public class Publication implements Serializable  {
         
         @XmlElement(name = "title")
+        @Column(name = "titulo", length = 45)
         private String title;
 
         @XmlElement(name = "link")
+        @Column(name = "link", length = 45)
         private String url;
         
         @XmlElement(name = "comments")
         private String comments;
 
         @XmlElement(name = "dc:creator")
+        @Column(name = "autor", length = 45)
         private String creator;
 
         @XmlElement(name = "category")
         private String category[];
         
         @XmlElement(name = "description")
+        @Column(name = "descricao", length = 45)
         private String description;
         
         @XmlElement(name = "content:encoded")
+        @Column(name = "conteudo", length = 45)
         private String content; 
         
         @XmlElement(name = "pubDate")
+        @Column(name = "data")
         private String date;
         
-//        @Id
+        @Id
+        @Column(name = "idPublicacoes", nullable = false)
+        @GeneratedValue(strategy = GenerationType.AUTO)
         private Long id;
 
         public Publication(String title, String url, String comments, String creator, String[] category, 

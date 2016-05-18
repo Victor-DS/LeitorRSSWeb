@@ -23,32 +23,47 @@
  */
 package leitor.feed.rss.lpiii.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author 41357205
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Channel {
+@Entity(name = "Feeds")
+public class Channel implements Serializable {
     
+    @Column(name = "nome", length = 45)
     private String title;
     
     @XmlElement(name = "atom:link")
+    @Column(name = "feedURL", length = 200)
     private String feedLink;
     
     @XmlElement(name = "link")
     private String websiteLink;
     
+    @Column(name = "descricao", length = 45)
     private String description;
     
+    @Column(name = "idioma", length = 45)
     private String language;
     
     private ArrayList<Publication> item;
+    
+    @Id
+    @Column(name = "idFeed", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
     public Channel(String title, String feedLink, String websiteLink, String description, String language, ArrayList<Publication> item) {
         this.title = title;
