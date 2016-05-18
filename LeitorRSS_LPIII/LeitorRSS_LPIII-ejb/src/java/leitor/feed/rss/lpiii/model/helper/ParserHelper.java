@@ -41,6 +41,12 @@ public class ParserHelper {
         
         public static ArrayList<Publication> getPublicationsFromRSS(String XML) 
                 throws XMLParseException, IOException, JAXBException {
+                Rss root = ParserHelper.getRSS(XML);
+                
+                return root.getChannel().getItem();
+        }
+        
+        public static Rss getRSS(String XML) throws XMLParseException, IOException, JAXBException {
                 if(XML == null || XML.isEmpty()) 
                     throw new XMLParseException("Empty file");
                 
@@ -54,7 +60,7 @@ public class ParserHelper {
                 StringReader reader = new StringReader(XML);
                 Rss root = (Rss) unmarshaller.unmarshal(reader);
                 
-                return root.getChannel().getItem();
+                return root;
         }
         
 }
