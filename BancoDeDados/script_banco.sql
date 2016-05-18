@@ -44,17 +44,7 @@ CREATE  TABLE IF NOT EXISTS `ProjetoLPIIIDB`.`Usuarios_has_Feeds` (
   `idFeed` INT NOT NULL ,
   PRIMARY KEY (`idUsuarios`, `idFeed`) ,
   INDEX `fk_Usuarios_has_Feeds_Feeds1` (`idFeed` ASC) ,
-  INDEX `fk_Usuarios_has_Feeds_Usuarios` (`idUsuarios` ASC) ,
-  CONSTRAINT `fk_Usuarios_has_Feeds_Usuarios`
-    FOREIGN KEY (`idUsuarios` )
-    REFERENCES `ProjetoLPIIIDB`.`Usuarios` (`idUsuarios` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Usuarios_has_Feeds_Feeds1`
-    FOREIGN KEY (`idFeed` )
-    REFERENCES `ProjetoLPIIIDB`.`Feeds` (`feedURL` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  INDEX `fk_Usuarios_has_Feeds_Usuarios` (`idUsuarios` ASC) )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_bin;
@@ -75,12 +65,7 @@ CREATE  TABLE IF NOT EXISTS `ProjetoLPIIIDB`.`Publicacoes` (
   `conteudo` VARCHAR(1000) NULL ,
   `Feeds_idFeed` INT NOT NULL ,
   PRIMARY KEY (`idPublicacoes`, `Feeds_idFeed`) ,
-  INDEX `fk_Publicacoes_Feeds1` (`Feeds_idFeed` ASC) ,
-  CONSTRAINT `fk_Publicacoes_Feeds1`
-    FOREIGN KEY (`Feeds_idFeed` )
-    REFERENCES `ProjetoLPIIIDB`.`Feeds` (`feedURL` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  INDEX `fk_Publicacoes_Feeds1` (`Feeds_idFeed` ASC) )
 ENGINE = InnoDB;
 
 
@@ -94,12 +79,7 @@ CREATE  TABLE IF NOT EXISTS `ProjetoLPIIIDB`.`Categorias_Por_Publicacao` (
   `Publicacoes_idPublicacoes` INT NOT NULL ,
   `Publicacoes_Feeds_idFeed` INT NOT NULL ,
   PRIMARY KEY (`Publicacoes_idPublicacoes`, `Publicacoes_Feeds_idFeed`) ,
-  INDEX `fk_Categorias_Por_Publicacao_Publicacoes1` (`Publicacoes_idPublicacoes` ASC, `Publicacoes_Feeds_idFeed` ASC) ,
-  CONSTRAINT `fk_Categorias_Por_Publicacao_Publicacoes1`
-    FOREIGN KEY (`Publicacoes_idPublicacoes` , `Publicacoes_Feeds_idFeed` )
-    REFERENCES `ProjetoLPIIIDB`.`Publicacoes` (`idPublicacoes` , `Feeds_idFeed` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  INDEX `fk_Categorias_Por_Publicacao_Publicacoes1` (`Publicacoes_idPublicacoes` ASC, `Publicacoes_Feeds_idFeed` ASC) )
 ENGINE = InnoDB;
 
 
@@ -112,12 +92,7 @@ CREATE  TABLE IF NOT EXISTS `ProjetoLPIIIDB`.`Lidos` (
   `foiLido` TINYINT(1) NULL ,
   `Publicacoes_idPublicacoes` INT NOT NULL ,
   `Publicacoes_Feeds_idFeed` INT NOT NULL ,
-  PRIMARY KEY (`Publicacoes_idPublicacoes`, `Publicacoes_Feeds_idFeed`) ,
-  CONSTRAINT `fk_Lidos_Publicacoes1`
-    FOREIGN KEY (`Publicacoes_idPublicacoes` , `Publicacoes_Feeds_idFeed` )
-    REFERENCES `ProjetoLPIIIDB`.`Publicacoes` (`idPublicacoes` , `Feeds_idFeed` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`Publicacoes_idPublicacoes`, `Publicacoes_Feeds_idFeed`) )
 ENGINE = InnoDB;
 
 
