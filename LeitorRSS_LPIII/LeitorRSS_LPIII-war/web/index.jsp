@@ -4,6 +4,8 @@
     Author     : victor
 --%>
 
+<%@page import="javax.ejb.EJB"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -48,14 +50,16 @@
                         <div data-role="content" style="padding: 5px;">
                                 <!-- Conteúdo da lista dos posts vem aqui -->   
                                 <!-- Mock -->
-                                <div class="ui-corner-all custom-corners" style="padding: 5px">
-                                        <div class="ui-bar ui-bar-a">
-                                                <h3>Cesar Menotti invade votação do impeachment pra avisar que tá mal</h3>
-                                        </div>
-                                        <div class="ui-body ui-body-a">
-                                                <p>Votação do impeachment rolando louca no senado, globo cobrindo cada segundo em Brasília, aí chamam o reporter pra informar um acontecimento e PLAW, surge o Cesar Menotti daquela dupla sertaneja com o Fabiano pra mandar um recado&#8230; &#8220;Para tudo, tenho algo mais importante que esse impeachment pra dizer pra vcs, tô mal.&#8221; AuhAUHAUHuhA Esse tipo [&#8230;]</p>                                        
-                                        </div>
-                                </div>
+                                <a href="http://www.google.com" target="_blank">
+                                    <div class="ui-corner-all custom-corners" style="padding: 5px">
+                                            <div class="ui-bar ui-bar-a">
+                                                    <h3>Cesar Menotti invade votação do impeachment pra avisar que tá mal</h3>
+                                            </div>
+                                            <div class="ui-body ui-body-a">
+                                                    <p>Votação do impeachment rolando louca no senado, globo cobrindo cada segundo em Brasília, aí chamam o reporter pra informar um acontecimento e PLAW, surge o Cesar Menotti daquela dupla sertaneja com o Fabiano pra mandar um recado&#8230; &#8220;Para tudo, tenho algo mais importante que esse impeachment pra dizer pra vcs, tô mal.&#8221; AuhAUHAUHuhA Esse tipo [&#8230;]</p>                                        
+                                            </div>
+                                    </div>
+                                </a>
                         </div>
                 </div>                
         </body>
