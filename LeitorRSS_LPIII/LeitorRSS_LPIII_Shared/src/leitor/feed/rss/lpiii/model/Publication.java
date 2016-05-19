@@ -39,34 +39,34 @@ import leitor.feed.rss.lpiii.model.util.Util;
  *
  * @author victor
  */
-@Entity(name = "Publicacoes")
+@Entity(name = "Publicacao")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Publication implements Serializable  {
         
         @XmlElement(name = "title")
-        @Column(name = "titulo", length = 45)
+        @Column(name = "titulo", length = 200)
         private String title;
 
         @XmlElement(name = "link")
-        @Column(name = "link", length = 45)
+        @Column(name = "link", length = 500)
         private String url;
         
         @XmlElement(name = "comments")
         private String comments;
 
         @XmlElement(name = "dc:creator")
-        @Column(name = "autor", length = 45)
+        @Column(name = "autor", length = 200)
         private String creator;
 
         @XmlElement(name = "category")
         private String category[];
         
         @XmlElement(name = "description")
-        @Column(name = "descricao", length = 45)
+        @Column(name = "descricao", length = 2000)
         private String description;
         
         @XmlElement(name = "content:encoded")
-        @Column(name = "conteudo", length = 45)
+        @Column(name = "conteudo", length = 2000)
         private String content; 
         
         @XmlElement(name = "pubDate")
@@ -75,7 +75,7 @@ public class Publication implements Serializable  {
         
         @Id
         @Column(name = "idPublicacoes", nullable = false)
-        @GeneratedValue(strategy = GenerationType.AUTO)
+        @GeneratedValue
         private Long id;
 
         public Publication(String title, String url, String comments, String creator, String[] category, 

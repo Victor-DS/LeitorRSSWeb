@@ -35,5 +35,7 @@ import javax.ejb.Remote;
 public interface RSSServiceRemote {
         
         public ArrayList<Publication> getPublications(String user);
+        
+        public void registerFeed(String url);
                 
 }

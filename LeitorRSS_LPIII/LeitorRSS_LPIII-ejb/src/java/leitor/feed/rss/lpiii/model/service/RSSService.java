@@ -27,12 +27,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.management.modelmbean.XMLParseException;
 import javax.xml.bind.JAXBException;
 import leitor.feed.rss.lpiii.controller.Teste;
 import leitor.feed.rss.lpiii.model.Publication;
+import leitor.feed.rss.lpiii.model.Rss;
+import leitor.feed.rss.lpiii.model.dao.RSSDAO;
 import leitor.feed.rss.lpiii.model.helper.ParserHelper;
 import leitor.feed.rss.lpiii.model.helper.Util;
 
@@ -43,17 +46,16 @@ import leitor.feed.rss.lpiii.model.helper.Util;
 @Stateless(mappedName = "RSSService")
 @LocalBean
 public class RSSService implements RSSServiceRemote{
+        
+        @EJB
+        private RSSDAO rssDAO;
 
         @Override
         public ArrayList<Publication> getPublications(String user) {
-                ArrayList<Publication> publications = new ArrayList<>();
+                Rss rss = null;
                 try {
                         String xml = Util.getFromURL("http://www.naosalvo.com.br/feed/");
-                        publications = ParserHelper.getPublicationsFromRSS(xml);
-                        
-                        for(Publication p : publications)
-                                System.out.println(p.getTitle());
-                        
+                        rss = ParserHelper.getRSS(xml);                        
                 } catch (IOException ex) {
                         Logger.getLogger(Teste.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (XMLParseException ex) {
@@ -61,8 +63,13 @@ public class RSSService implements RSSServiceRemote{
                 } catch (JAXBException ex) {
                         Logger.getLogger(Teste.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                                
-                return publications;
+                
+                return rssDAO.addPublications(rss, "USER");
+        }
+
+        @Override
+        public void registerFeed(String url) {
+                
         }
         
 }
