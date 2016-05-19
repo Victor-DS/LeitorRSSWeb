@@ -33,7 +33,7 @@ import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import leitor.feed.rss.lpiii.model.helper.Util;
+import leitor.feed.rss.lpiii.model.util.Util;
 
 /**
  *
@@ -167,6 +167,20 @@ public class Publication implements Serializable  {
 
         public void setId(Long id) {
                 this.id = id;
+        }
+
+        @Override
+        public String toString() {
+                return "                                <a href=\""+this.url+"\" target=\"_blank\">\n" +
+"                                    <div class=\"ui-corner-all custom-corners\" style=\"padding: 5px\">\n" +
+"                                            <div class=\"ui-bar ui-bar-a\">\n" +
+"                                                    "+this.title+"\n" +
+"                                            </div>\n" +
+"                                            <div class=\"ui-body ui-body-a\">\n" +
+"                                                    "+this.description+"                                        \n" +
+"                                            </div>\n" +
+"                                    </div>\n" +
+"                                </a>";
         }
         
 }

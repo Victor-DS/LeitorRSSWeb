@@ -4,7 +4,16 @@
     Author     : victor
 --%>
 
+<%@page import="leitor.feed.rss.lpiii.model.Publication"%>
+<%@page import="javax.naming.InitialContext"%>
+<%@page import="leitor.feed.rss.lpiii.model.service.RSSServiceRemote"%>
+<%@page import="javax.ejb.EJB"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+        RSSServiceRemote rssRemote = (RSSServiceRemote) InitialContext.doLookup("RSSService");
+        ArrayList<Publication> publications = rssRemote.getPublications("USER");
+%>
 <!DOCTYPE html>
 <html>
         <head>
@@ -28,11 +37,12 @@
                                         <input type="text" id="feedURLInput"
                                                data-wrapper-class="controlgroup-textinput ui-btn" 
                                                placeholder="http://www.site.com.br/feed">
-                                        <button>Enviar</button>
+                                        <button>Add</button>
                                 </div>
                         </header>
 
-                        <div data-role="panel" id="painelLateral" >
+                        <!-- PAINEL LATERAL -->
+                        <div data-role="panel" id="painelLateral" data-display="overlay" >
                                 <ul data-role="listview" data-divider-theme="a">
                                         <li data-role="list-divider" >Principal</li>
                                         <li><a href="#" data-rel="close">Início</a></li>
@@ -42,55 +52,17 @@
                                         <li><a href="#">Filtro B</a></li>
                                 </ul>
                         </div>
+                        <!-- PAINEL LATERAL -->
                         
-                        <div data-role="content" style="padding: 5px">
+                        <div data-role="content" style="padding: 5px;">
                                 <!-- Conteúdo da lista dos posts vem aqui -->   
                                 <!-- Mock -->
-                                <div class="ui-corner-all custom-corners" style="padding: 5px">
-                                        <div class="ui-bar ui-bar-a">
-                                                <h3>Cesar Menotti invade votação do impeachment pra avisar que tá mal</h3>
-                                        </div>
-                                        <div class="ui-body ui-body-a">
-                                                <p>Votação do impeachment rolando louca no senado, globo cobrindo cada segundo em Brasília, aí chamam o reporter pra informar um acontecimento e PLAW, surge o Cesar Menotti daquela dupla sertaneja com o Fabiano pra mandar um recado&#8230; &#8220;Para tudo, tenho algo mais importante que esse impeachment pra dizer pra vcs, tô mal.&#8221; AuhAUHAUHuhA Esse tipo [&#8230;]</p>                                        
-                                        </div>
-                                </div>
-                                
-                                <div class="ui-corner-all custom-corners" style="padding: 5px">
-                                        <div class="ui-bar ui-bar-a">
-                                                <h3>Cesar Menotti invade votação do impeachment pra avisar que tá mal</h3>
-                                        </div>
-                                        <div class="ui-body ui-body-a">
-                                                <p>Votação do impeachment rolando louca no senado, globo cobrindo cada segundo em Brasília, aí chamam o reporter pra informar um acontecimento e PLAW, surge o Cesar Menotti daquela dupla sertaneja com o Fabiano pra mandar um recado&#8230; &#8220;Para tudo, tenho algo mais importante que esse impeachment pra dizer pra vcs, tô mal.&#8221; AuhAUHAUHuhA Esse tipo [&#8230;]</p>                                        
-                                        </div>
-                                </div>
-                                
-                                <div class="ui-corner-all custom-corners" style="padding: 5px">
-                                        <div class="ui-bar ui-bar-a">
-                                                <h3>Cesar Menotti invade votação do impeachment pra avisar que tá mal</h3>
-                                        </div>
-                                        <div class="ui-body ui-body-a">
-                                                <p>Votação do impeachment rolando louca no senado, globo cobrindo cada segundo em Brasília, aí chamam o reporter pra informar um acontecimento e PLAW, surge o Cesar Menotti daquela dupla sertaneja com o Fabiano pra mandar um recado&#8230; &#8220;Para tudo, tenho algo mais importante que esse impeachment pra dizer pra vcs, tô mal.&#8221; AuhAUHAUHuhA Esse tipo [&#8230;]</p>                                        
-                                        </div>
-                                </div>
-                                
-                                <div class="ui-corner-all custom-corners" style="padding: 5px">
-                                        <div class="ui-bar ui-bar-a">
-                                                <h3>Cesar Menotti invade votação do impeachment pra avisar que tá mal</h3>
-                                        </div>
-                                        <div class="ui-body ui-body-a">
-                                                <p>Votação do impeachment rolando louca no senado, globo cobrindo cada segundo em Brasília, aí chamam o reporter pra informar um acontecimento e PLAW, surge o Cesar Menotti daquela dupla sertaneja com o Fabiano pra mandar um recado&#8230; &#8220;Para tudo, tenho algo mais importante que esse impeachment pra dizer pra vcs, tô mal.&#8221; AuhAUHAUHuhA Esse tipo [&#8230;]</p>                                        
-                                        </div>
-                                </div>
-                                
-                                <div class="ui-corner-all custom-corners" style="padding: 5px">
-                                        <div class="ui-bar ui-bar-a">
-                                                <h3>Cesar Menotti invade votação do impeachment pra avisar que tá mal</h3>
-                                        </div>
-                                        <div class="ui-body ui-body-a">
-                                                <p>Votação do impeachment rolando louca no senado, globo cobrindo cada segundo em Brasília, aí chamam o reporter pra informar um acontecimento e PLAW, surge o Cesar Menotti daquela dupla sertaneja com o Fabiano pra mandar um recado&#8230; &#8220;Para tudo, tenho algo mais importante que esse impeachment pra dizer pra vcs, tô mal.&#8221; AuhAUHAUHuhA Esse tipo [&#8230;]</p>                                        
-                                        </div>
-                                </div>
-                                                                
+                                <%
+        
+                                        for(Publication p : publications)
+                                                out.println(p);
+        
+                                %>
                         </div>
                 </div>                
         </body>
