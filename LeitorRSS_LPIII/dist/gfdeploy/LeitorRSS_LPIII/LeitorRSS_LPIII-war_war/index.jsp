@@ -12,6 +12,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
         RSSServiceRemote rssRemote = (RSSServiceRemote) InitialContext.doLookup("RSSService");
+        rssRemote.registerFeed("http://www.naosalvo.com.br/feed/", "USER");
+        
         ArrayList<Publication> publications = rssRemote.getPublications("USER");
 %>
 <!DOCTYPE html>

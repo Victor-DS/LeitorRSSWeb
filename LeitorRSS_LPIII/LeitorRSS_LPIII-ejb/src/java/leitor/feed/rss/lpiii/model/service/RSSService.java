@@ -52,9 +52,14 @@ public class RSSService implements RSSServiceRemote{
 
         @Override
         public ArrayList<Publication> getPublications(String user) {
+                return rssDAO.getPublications(user);
+        }
+
+        @Override
+        public void registerFeed(String url, String user) {
                 Rss rss = null;
                 try {
-                        String xml = Util.getFromURL("http://www.naosalvo.com.br/feed/");
+                        String xml = Util.getFromURL(url);
                         rss = ParserHelper.getRSS(xml);                        
                 } catch (IOException ex) {
                         Logger.getLogger(Teste.class.getName()).log(Level.SEVERE, null, ex);
@@ -64,12 +69,7 @@ public class RSSService implements RSSServiceRemote{
                         Logger.getLogger(Teste.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 
-                return rssDAO.addPublications(rss, "USER");
-        }
-
-        @Override
-        public void registerFeed(String url) {
-                
+                rssDAO.addPublications(rss, "USER");
         }
         
 }

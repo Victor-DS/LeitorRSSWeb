@@ -28,6 +28,8 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import leitor.feed.rss.lpiii.model.Channel;
 import leitor.feed.rss.lpiii.model.Publication;
 import leitor.feed.rss.lpiii.model.Rss;
@@ -38,7 +40,7 @@ import leitor.feed.rss.lpiii.model.Rss;
  */
 @Stateless
 @LocalBean
-public class RSSDAO {
+public class RSSDAO {        
         
         @PersistenceContext(unitName = "LeitorRSSPU")
         private EntityManager em;
@@ -60,7 +62,13 @@ public class RSSDAO {
                 return em.merge(p);                
         }
         
-//        public ArrayList<Publication> getPublications(String user) {
-//                
-//        }
+        public ArrayList<Publication> getPublications(String user) {                
+                TypedQuery<Publication> query =  
+                        em.createQuery("SELECT p FROM Publicacao p", Publication.class);
+                
+                ArrayList<Publication> publications = new ArrayList<>();
+                publications.addAll(query.getResultList());
+                
+                return publications;
+        }
 }
