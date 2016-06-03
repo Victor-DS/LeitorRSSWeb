@@ -94,6 +94,14 @@ public class Publication implements Serializable  {
 
         public Publication() {
         }
+
+        public Channel getFeed() {
+                return feed;
+        }
+
+        public void setFeed(Channel feed) {
+                this.feed = feed;
+        }
         
         public String getTitle() {
                 return title;

@@ -60,10 +60,18 @@
                     </header>
                     
                     <section>
-                        <div style="vertical-align: middle;" 
+<!--                        <div style="vertical-align: middle;" 
                              class="fb-login-button" data-max-rows="1" 
                              data-size="xlarge" data-show-faces="false" 
-                             data-auto-logout-link="false"></div>
+                             data-auto-logout-link="false"></div>-->
+
+                                        <form action="index.jsp" method="POST">
+                                                <input type="text" name="username" id="username" value="" 
+                                                       data-wrapper-class="controlgroup-textinput ui-btn" 
+                                                       placeholder="Henry Chinaski" >
+                                                <input type="submit" value="Entrar">
+                                        </form>
+
                     </section>
                     
                 </div>                

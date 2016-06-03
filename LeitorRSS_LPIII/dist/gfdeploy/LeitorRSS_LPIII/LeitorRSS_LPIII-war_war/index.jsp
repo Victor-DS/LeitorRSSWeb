@@ -11,10 +11,13 @@
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-        final User user = new User("Victor", null);
-        
+        final User user = new User(request.getParameter("username"), null);
+        final String url = request.getParameter("feedURL");
+                
         RSSServiceRemote rssRemote = (RSSServiceRemote) InitialContext.doLookup("RSSService");
-        rssRemote.registerFeed("http://www.naosalvo.com.br/feed/", user);
+        
+        if(url != null)
+                rssRemote.registerFeed(url, user);
         
         ArrayList<Publication> publications = rssRemote.getPublications(user);
 %>
@@ -38,10 +41,16 @@
                                 </div>
                                 
                                 <div data-role="controlgroup" data-type="horizontal" style="padding: 10px;">
-                                        <input type="text" id="feedURLInput"
-                                               data-wrapper-class="controlgroup-textinput ui-btn" 
-                                               placeholder="http://www.site.com.br/feed">
-                                        <button>Add</button>
+                                        <form action="index.jsp" method="POST">
+                                                <input type="hidden" name="username" id="username" 
+                                                       value="<%= user.getNome() %>" 
+                                                       data-wrapper-class="controlgroup-textinput ui-btn" 
+                                                       placeholder="Henry Chinaski">
+                                                <input type="text" name="feedURL" id="feedURL" value="" 
+                                                       data-wrapper-class="controlgroup-textinput ui-btn" 
+                                                       placeholder="http://www.site.com.br/feed" >
+                                                <input type="submit" value="Adicionar">
+                                        </form>
                                 </div>
                         </header>
 

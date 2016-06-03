@@ -52,8 +52,10 @@ public class RSSDAO {
         public ArrayList<Publication> addPublications(Rss rss, String user) {
                 ArrayList<Publication> publications = new ArrayList<Publication>();
                 
-                for(Publication p : rss.getChannel().getItem())
+                for(Publication p : rss.getChannel().getItem()) {
+                        p.setFeed(rss.getChannel());
                         publications.add(addPublication(p, user));
+                }
                         
                 return publications;
         }
@@ -64,7 +66,8 @@ public class RSSDAO {
         
         public ArrayList<Publication> getPublications(String user) {                
                 TypedQuery<Publication> query =  
-                        em.createQuery("SELECT p FROM Publicacao p", Publication.class);
+                        em.createQuery("SELECT P  "
+                                + "FROM  Publicacao P", Publication.class);
                 
                 ArrayList<Publication> publications = new ArrayList<>();
                 publications.addAll(query.getResultList());
