@@ -26,6 +26,7 @@ package leitor.feed.rss.lpiii.model.service;
 import java.util.ArrayList;
 import leitor.feed.rss.lpiii.model.Publication;
 import javax.ejb.Remote;
+import leitor.feed.rss.lpiii.model.User;
 
 /**
  *
@@ -34,8 +35,8 @@ import javax.ejb.Remote;
 @Remote
 public interface RSSServiceRemote {
         
-        public ArrayList<Publication> getPublications(String user);
+        public ArrayList<Publication> getPublications(User user);
         
-        public void registerFeed(String url, String user);
+        public void registerFeed(String url, User user);
                 
 }

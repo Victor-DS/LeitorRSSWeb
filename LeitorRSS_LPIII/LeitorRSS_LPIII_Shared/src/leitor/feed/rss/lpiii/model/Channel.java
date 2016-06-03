@@ -25,11 +25,14 @@ package leitor.feed.rss.lpiii.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -45,26 +48,26 @@ public class Channel implements Serializable {
     @Column(name = "nome", length = 45)
     private String title;
     
+    @Id
     @XmlElement(name = "atom:link")
-    @Column(name = "feedURL", length = 200)
+    @Column(name = "feedURL", length = 200, nullable = false)
     private String feedLink;
     
     @XmlElement(name = "link")
     private String websiteLink;
     
-    @Column(name = "descricao", length = 45)
+    @Column(name = "descricao", length = 200)
     private String description;
     
     @Column(name = "idioma", length = 45)
     private String language;
     
-    private ArrayList<Publication> item;
+    @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL, mappedBy="feed")
+    private List<Publication> item;
     
-    @Id
-    @Column(name = "idFeed", nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-
+    @ManyToMany(targetEntity = User.class)
+    private List<User> users;
+    
     public Channel(String title, String feedLink, String websiteLink, String description, String language, ArrayList<Publication> item) {
         this.title = title;
         this.feedLink = feedLink;
@@ -75,6 +78,8 @@ public class Channel implements Serializable {
     }
 
     public Channel() {
+            item = new ArrayList<>();
+            users = new ArrayList<>();
     }
 
     public String getTitle() {
@@ -117,11 +122,27 @@ public class Channel implements Serializable {
         this.language = language;
     }
 
-    public ArrayList<Publication> getItem() {
+    public List<Publication> getItem() {
         return item;
     }
 
     public void setItem(ArrayList<Publication> item) {
         this.item = item;
     }
+
+        public List<User> getUsers() {
+                return users;
+        }
+
+        public void setUsers(ArrayList<User> users) {
+                this.users = users;
+        }
+        
+        public boolean addUser(User u) {
+                return users.add(u);
+        }
+        
+        public boolean addPublication(Publication p) {
+                return item.add(p);
+        }
 }

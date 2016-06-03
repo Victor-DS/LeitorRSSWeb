@@ -22,20 +22,20 @@ import leitor.feed.rss.lpiii.model.helper.Util;
 public class Teste {
         
         public static void main(String[] args) {
-                try {
-                        String xml = Util.getFromURL("http://www.naosalvo.com.br/feed/");
-                        ArrayList<Publication> publications = ParserHelper.getPublicationsFromRSS(xml);
-                        
-                        for(Publication p : publications)
-                                System.out.println(p.getTitle());
-                        
-                } catch (IOException ex) {
-                        Logger.getLogger(Teste.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (XMLParseException ex) {
-                        Logger.getLogger(Teste.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (JAXBException ex) {
-                        Logger.getLogger(Teste.class.getName()).log(Level.SEVERE, null, ex);
-                }
+//                try {
+//                        String xml = Util.getFromURL("http://www.naosalvo.com.br/feed/");
+//                        ArrayList<Publication> publications = ParserHelper.getPublicationsFromRSS(xml);
+//                        
+//                        for(Publication p : publications)
+//                                System.out.println(p.getTitle());
+//                        
+//                } catch (IOException ex) {
+//                        Logger.getLogger(Teste.class.getName()).log(Level.SEVERE, null, ex);
+//                } catch (XMLParseException ex) {
+//                        Logger.getLogger(Teste.class.getName()).log(Level.SEVERE, null, ex);
+//                } catch (JAXBException ex) {
+//                        Logger.getLogger(Teste.class.getName()).log(Level.SEVERE, null, ex);
+//                }
         }
         
 }

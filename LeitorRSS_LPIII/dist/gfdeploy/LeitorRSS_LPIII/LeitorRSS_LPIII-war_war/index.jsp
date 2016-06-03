@@ -3,18 +3,20 @@
     Created on : May 12, 2016, 3:24:33 PM
     Author     : victor
 --%>
-
 <%@page import="leitor.feed.rss.lpiii.model.Publication"%>
+<%@page import="leitor.feed.rss.lpiii.model.User"%>
 <%@page import="javax.naming.InitialContext"%>
 <%@page import="leitor.feed.rss.lpiii.model.service.RSSServiceRemote"%>
 <%@page import="javax.ejb.EJB"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-        RSSServiceRemote rssRemote = (RSSServiceRemote) InitialContext.doLookup("RSSService");
-        rssRemote.registerFeed("http://www.naosalvo.com.br/feed/", "USER");
+        final User user = new User("Victor", null);
         
-        ArrayList<Publication> publications = rssRemote.getPublications("USER");
+        RSSServiceRemote rssRemote = (RSSServiceRemote) InitialContext.doLookup("RSSService");
+        rssRemote.registerFeed("http://www.naosalvo.com.br/feed/", user);
+        
+        ArrayList<Publication> publications = rssRemote.getPublications(user);
 %>
 <!DOCTYPE html>
 <html>
@@ -58,7 +60,6 @@
                         
                         <div data-role="content" style="padding: 5px;">
                                 <!-- Conteúdo da lista dos posts vem aqui -->   
-                                <!-- Mock -->
                                 <%
         
                                         for(Publication p : publications)

@@ -27,9 +27,11 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -47,6 +49,7 @@ public class Publication implements Serializable  {
         @Column(name = "titulo", length = 200)
         private String title;
 
+        @Id
         @XmlElement(name = "link")
         @Column(name = "link", length = 500)
         private String url;
@@ -72,11 +75,10 @@ public class Publication implements Serializable  {
         @XmlElement(name = "pubDate")
         @Column(name = "data")
         private String date;
-        
-        @Id
-        @Column(name = "idPublicacoes", nullable = false)
-        @GeneratedValue
-        private Long id;
+                
+        @ManyToOne(fetch=FetchType.LAZY)
+        @JoinColumn(name="idFeed")
+        private Channel feed;
 
         public Publication(String title, String url, String comments, String creator, String[] category, 
                 String description, String content, String timestamp) {
@@ -159,14 +161,6 @@ public class Publication implements Serializable  {
 
         public void setDate(String date) {
                 this.date = date;
-        }
-
-        public Long getId() {
-                return id;
-        }
-
-        public void setId(Long id) {
-                this.id = id;
         }
 
         @Override

@@ -25,7 +25,7 @@ package leitor.feed.rss.lpiii.model.helper;
 
 import java.io.IOException;
 import java.io.StringReader;
-import java.util.ArrayList;
+import java.util.List;
 import javax.management.modelmbean.XMLParseException;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -39,7 +39,7 @@ import leitor.feed.rss.lpiii.model.Rss;
  */
 public class ParserHelper {
         
-        public static ArrayList<Publication> getPublicationsFromRSS(String XML) 
+        public static List<Publication> getPublicationsFromRSS(String XML) 
                 throws XMLParseException, IOException, JAXBException {
                 Rss root = ParserHelper.getRSS(XML);
                 

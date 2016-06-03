@@ -35,7 +35,10 @@ import javax.xml.bind.JAXBException;
 import leitor.feed.rss.lpiii.controller.Teste;
 import leitor.feed.rss.lpiii.model.Publication;
 import leitor.feed.rss.lpiii.model.Rss;
+import leitor.feed.rss.lpiii.model.User;
+import leitor.feed.rss.lpiii.model.dao.FeedDAO;
 import leitor.feed.rss.lpiii.model.dao.RSSDAO;
+import leitor.feed.rss.lpiii.model.dao.UserDAO;
 import leitor.feed.rss.lpiii.model.helper.ParserHelper;
 import leitor.feed.rss.lpiii.model.helper.Util;
 
@@ -49,14 +52,20 @@ public class RSSService implements RSSServiceRemote{
         
         @EJB
         private RSSDAO rssDAO;
+        
+        @EJB
+        private UserDAO userDAO;
+        
+        @EJB
+        private FeedDAO feedDAO;
 
         @Override
-        public ArrayList<Publication> getPublications(String user) {
-                return rssDAO.getPublications(user);
+        public ArrayList<Publication> getPublications(User user) {
+                return rssDAO.getPublications(user.getNome());
         }
 
         @Override
-        public void registerFeed(String url, String user) {
+        public void registerFeed(String url, User user) {
                 Rss rss = null;
                 try {
                         String xml = Util.getFromURL(url);
@@ -69,7 +78,10 @@ public class RSSService implements RSSServiceRemote{
                         Logger.getLogger(Teste.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 
-                rssDAO.addPublications(rss, "USER");
+                rss.getChannel().addUser(user);
+                rss.getChannel().setFeedLink(url);
+                
+                feedDAO.addFeed(rss.getChannel());
         }
         
 }

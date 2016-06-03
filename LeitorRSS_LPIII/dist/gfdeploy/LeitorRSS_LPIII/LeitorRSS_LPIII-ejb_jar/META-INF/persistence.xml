@@ -4,6 +4,7 @@
     <jta-data-source>jdbc/sample</jta-data-source>
     <class>leitor.feed.rss.lpiii.model.Channel</class>
     <class>leitor.feed.rss.lpiii.model.Publication</class>
+    <class>leitor.feed.rss.lpiii.model.User</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
